@@ -32,10 +32,10 @@ int main()
     strcpy(str_copy, str);
     strcpy(str_copy_2, str);
     strcpy(str_copy_3, str);
-    strcpy(str_copy_4, str);
 
     printf("Строка без пробелов\n");
     istr=strtok(str," ");
+
     while (istr!= NULL)
     {
         fputs(istr, stdout);
@@ -55,15 +55,26 @@ int main()
     }
 
     char *p=strtok(str_copy_3," .");
-
+    int h=0;
     while (p!=NULL)
     {
         if (strcmp(p,last)!=0)
         {
             fprintf(stdout,"%s ",p);
+            for(int i=0; i<strlen(p); i++)
+            {
+                str_copy_4[h]=p[i];
+                h++;
+
+            }
+            str_copy_4[h]=' ';
+            h++;
         }
         p=strtok(NULL," .");
     }
+    str_copy_4[h]='\0';
+
+
     printf("\n Строка со словами без повторов первой буквы \n");
 
     int i=1,k=0;
@@ -80,9 +91,9 @@ int main()
             }
 
         }
-      tikva[k+1] =' ';
-      k+=2;
-      c=strtok (NULL, " .");
+        tikva[k+1] =' ';
+        k+=2;
+        c=strtok (NULL, " .");
     }
     tikva[k]='\0';
     fprintf(stdout,"%s",tikva);
